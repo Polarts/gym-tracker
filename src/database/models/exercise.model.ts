@@ -19,5 +19,3 @@ export interface CardioExercise extends Exercise {
     speed?: number;
     distance?: number;
 }
-
-export type AnyExercise = RepsExercise | CardioExercise;

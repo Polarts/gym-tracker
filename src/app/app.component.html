@@ -8,14 +8,14 @@
   <a 
     mat-tab-link 
     routerLink="/sessions"
-    [active]="currentRoute() === '/sessions'"
+    [active]="currentRoute().includes('sessions')"
   >
     Sessions
   </a>
   <a 
     mat-tab-link 
     routerLink="/plans"
-    [active]="currentRoute() === '/plans'"
+    [active]="currentRoute().includes('plans')"
   >
     Plans
   </a>

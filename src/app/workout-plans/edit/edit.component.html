@@ -1,0 +1,14 @@
+<h4>Workout Plan</h4>
+<form (ngSubmit)="handleSubmit($event)" class="workout-form">
+    <mat-form-field>
+        <mat-label>Workout Name</mat-label>
+        <input 
+            matInput
+            placeholder="Name your workout"
+            [(ngModel)]="workout().name"
+            name="workoutName"
+            required
+        />
+    </mat-form-field>
+    <button>Submit</button>
+</form>

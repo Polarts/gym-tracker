@@ -4,7 +4,7 @@
             [style.color]="selectedPlanId() === plan.id? 'red' : 'black'"
             (click)="selectedPlanId.set(plan.id)"
         >
-            {{plan.id}}: {{plan.name}}
+            {{plan.id}}: {{plan.name}} <button (click)="handleEditClick(plan.id)">Edit</button>
         </li>
     } @empty {
         <li>No plans for the forseeable future!</li>
