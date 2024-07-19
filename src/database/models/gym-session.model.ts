@@ -2,7 +2,7 @@ import { Exercise } from "./exercise.model";
 import { WorkoutPlan } from "./workout-plan.model";
 
 export interface GymSession {
-    id: number;
+    id?: number;
     startTime: number;
     endTime: number;
     plan: WorkoutPlan['id'];

@@ -1,0 +1,12 @@
+<ul>
+    @for (plan of $any(workoutPlans$ | async); track plan.id) {
+        <li 
+            [style.color]="selectedPlanId() === plan.id? 'red' : 'black'"
+            (click)="selectedPlanId.set(plan.id)"
+        >
+            {{plan.id}}: {{plan.name}}
+        </li>
+    } @empty {
+        <li>No plans for the forseeable future!</li>
+    }
+</ul>

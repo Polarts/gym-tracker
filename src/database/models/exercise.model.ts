@@ -1,7 +1,7 @@
 export type ExerciseTypes = 'reps' | 'cardio';
 
 export interface Exercise {
-    id: number;
+    id?: number;
     name: string;
     type: ExerciseTypes;
 }
