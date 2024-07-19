@@ -1,0 +1,52 @@
+<h4 mat-dialog-title>Add new Exercise</h4>
+<mat-dialog-content>
+    <div [formGroup]="exerciseForm" class="exercise-form">
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="type" required>
+                <mat-option value="reps">Repetitions</mat-option>
+                <mat-option value="cardio">Cardio</mat-option>
+            </mat-select>
+        </mat-form-field>
+        @if (exerciseForm.value.type === 'reps') {
+            <div formGroupName="reps" class="reps-group">
+                <mat-form-field appearance="outline">
+                    <mat-label>Repetitions</mat-label>
+                    <input formControlName="repetitions" type="number" matInput required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Sets</mat-label>
+                    <input formControlName="sets" type="number" matInput required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Weight (Kg)</mat-label>
+                    <input formControlName="weight" type="number" matInput required>
+                </mat-form-field>
+            </div>
+        }
+        @if (exerciseForm.value.type === 'cardio') {
+            <div formGroupName="cardio" class="cardio-group">
+                <mat-form-field appearance="outline">
+                    <mat-label>Duration (Min)</mat-label>
+                    <input formControlName="duration" type="number" matInput required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Distance (optional)</mat-label>
+                    <input formControlName="distance" type="number" matInput>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Speed (optional)</mat-label>
+                    <input formControlName="speed" type="number" matInput>
+                </mat-form-field>
+            </div>
+        }
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close()">Cancel</button>
+    <button mat-button cdkFocusInitial (click)="handleAddClick()">Add</button>
+</mat-dialog-actions>

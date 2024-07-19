@@ -1,0 +1,18 @@
+.exercise-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+
+    .reps-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cardio-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

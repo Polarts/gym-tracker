@@ -1,14 +1,49 @@
-<h4>Workout Plan</h4>
+<div class="title-row">
+    <button mat-icon-button (click)="handleBackClick()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    <h5 class="title">Workout Plan</h5>
+</div>
 <form (ngSubmit)="handleSubmit($event)" class="workout-form">
-    <mat-form-field>
-        <mat-label>Workout Name</mat-label>
-        <input 
-            matInput
-            placeholder="Name your workout"
-            [(ngModel)]="workout().name"
-            name="workoutName"
-            required
-        />
-    </mat-form-field>
-    <button>Submit</button>
+    <div class="top-row">
+        <mat-form-field appearance="outline">
+            <mat-label>Workout Name</mat-label>
+            <input 
+                matInput
+                [(ngModel)]="workout().name"
+                name="workoutName"
+                required
+            />
+        </mat-form-field>
+        <button type="button" mat-button (click)="handleAddExercise()">+ Add Exercise</button>
+    </div>
+    @for (exercise of workout().exercises; track exercise.id) {
+        <mat-card class="exercise-card">
+            <mat-card-content>
+                <b>{{ exercise.name }}</b>
+                @if (exercise.type === 'reps') {
+                    <span>Reps: {{ exercise.repetitions }}</span>
+                    <span>Sets: {{ exercise.sets }}</span>
+                    <span>Kg: {{ exercise.weight }}</span>
+                }
+                @if (exercise.type === 'cardio') {
+                    <span>Duration (Min): {{ exercise.duration }}</span>
+                    @if (exercise.distance) {
+                        <span>Distance: {{ exercise.distance }}</span>
+                    }
+                    @if (exercise.speed) {
+                        <span>Speed: {{ exercise.speed }}</span>
+                    }
+                }
+                <button mat-icon-button (click)="handleDeleteClick(exercise)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-content>
+        </mat-card>
+    } @empty {
+        <div class="no-exercise">
+            <p>No exercises defined yet.</p>
+        </div>
+    }
+    <button type="submit" mat-button class="submit-btn">Submit</button>
 </form>
